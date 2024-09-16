@@ -3,104 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descifrar Código</title>
+    <title>Validación de Código</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
         }
-        #code-input {
-            font-size: 24px;
-            padding: 10px;
-            margin-bottom: 20px;
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             text-align: center;
-            width: 300px;
-            border: 2px solid #ccc;
+        }
+        #message, #video {
+            display: none;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .keypad {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .keypad button {
-            font-size: 24px;
-            padding: 20px;
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
             border: none;
             border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
-        .keypad button:hover {
-            background-color: #0056b3;
+        button:hover {
+            background-color: #218838;
         }
-        #message {
-            font-size: 20px;
-            color: green;
-            margin-top: 20px;
-            text-align: center;
+        iframe {
+            width: 100%;
+            height: 315px;
         }
     </style>
 </head>
 <body>
 
-    <h1>ADIVINA LO CODIG CAPDOU</h1>
-    <input type="text" id="code-input" maxlength="12" readonly>
-    <div class="keypad">
-        <button onclick="appendNumber(1)">1</button>
-        <button onclick="appendNumber(2)">2</button>
-        <button onclick="appendNumber(3)">3</button>
-        <button onclick="appendNumber(4)">4</button>
-        <button onclick="appendNumber(5)">5</button>
-        <button onclick="appendNumber(6)">6</button>
-        <button onclick="appendNumber(7)">7</button>
-        <button onclick="appendNumber(8)">8</button>
-        <button onclick="appendNumber(9)">9</button>
-        <button onclick="appendNumber(0)">0</button>
-        <button onclick="clearInput()">C</button>
-        <button onclick="submitCode()">OK</button>
+<div class="container">
+    <h2>Introduce el Código</h2>
+    <input type="text" id="codeInput" placeholder="Escribe el código aquí">
+    <button onclick="validateCode()">Enviar</button>
+    
+    <div id="message">
+        <h3>Código correcto</h3>
+        <p>¡Has ingresado el código correcto! Aquí tienes el video:</p>
     </div>
 
-    <div id="message"></div>
+    <div id="video">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
 
-    <script>
-        const correctCode = "159357258456";
-        const successMessage = `Skibidi Sigma Pomni Digital Fortnite Chamba Free Gigachad Rizz Ohmygodfloo XXXTentacion Hotmail Lionel Ronaldo Junior Mewing Tercero Chiki Ibai Xokas Ete Sech Golden Toy Puppet Ohio Rubén Tuesta YouTubeproinsano Globodetexto51 Decadencia777`;
+<script>
+    function validateCode() {
+        const code = document.getElementById('codeInput').value;
+        const correctCode = "1234"; // Este es el código que se debe ingresar
 
-        function appendNumber(number) {
-            const input = document.getElementById('code-input');
-            if (input.value.length < 12) {
-                input.value += number;
-            }
+        if (code === correctCode) {
+            document.getElementById('hola jan welcome to de moodle comunity').style.display = 'block';
+            document.getElementById('videoplayback (2).mp4').style.display = 'block';
+        } else {
+            alert("Código incorrecto, por favor intenta de nuevo.");
         }
-
-        function clearInput() {
-            document.getElementById('code-input').value = '';
-        }
-
-        function submitCode() {
-            const code = document.getElementById('code-input').value;
-            const messageDiv = document.getElementById('message');
-            if (code.length === 12) {
-                if (code === correctCode) {
-                    messageDiv.textContent = successMessage;
-                } else {
-                    messageDiv.textContent = 'Código incorrecto, inténtalo de nuevo.';
-                    messageDiv.style.color = 'red';
-                }
-            } else {
-                messageDiv.textContent = 'Por favor, introduce un código de 12 dígitos.';
-                messageDiv.style.color = 'red';
-            }
-        }
-    </script>
+    }
+</script>
 
 </body>
 </html>
